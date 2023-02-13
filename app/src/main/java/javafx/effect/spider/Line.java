@@ -22,6 +22,18 @@ class Line {
         return Math.sqrt(Math.pow(x - tx, 2) + Math.pow(y - ty, 2));
     }
 
+    public void draw(Canvas canvas, final PointGraphics lhs, final PointGraphics rhs) {
+        var llife = lhs.getOpacity();
+        var rlife = rhs.getOpacity();
+        var dist = distance(lhs.getPoint(), rhs.getPoint());
+
+        double maxwidth = Math.min(lhs.getPoint().getR(), rhs.getPoint().getR());
+        double k = 1 - dist / maxdist;
+        this.width = maxwidth * k;
+
+        draw(canvas, lhs.getPoint(), rhs.getPoint(), Math.min(llife, rlife) / 4);
+    }
+
     public void draw(Canvas canvas, final Point lhs, final Point rhs, final double opacity) {
         if (distance(lhs, rhs) > maxdist) {
             return;

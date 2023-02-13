@@ -1,17 +1,15 @@
 package javafx.effect.spider;
 
 import javafx.scene.canvas.Canvas;
-import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.effect.BoxBlur;
 import javafx.scene.paint.Color;
 
 class PointGraphics {
     Point point;
     Color color;
-    final int timelife;
-    int restlife;
+    final double timelife;
+    double restlife;
 
-    public PointGraphics(Point point, Color color, int timelife) {
+    public PointGraphics(Point point, Color color, double timelife) {
         this.point = point;
         this.color = color;
         this.timelife = timelife;
@@ -34,11 +32,11 @@ class PointGraphics {
         this.color = color;
     }
 
-    public int getTimelife() {
+    public double getTimelife() {
         return timelife;
     }
 
-    public int getRestlife() {
+    public double getRestlife() {
         return restlife;
     }
 
@@ -48,7 +46,8 @@ class PointGraphics {
 
     public void draw(Canvas canvas) {
         var ctx = canvas.getGraphicsContext2D();
-        ctx.setFill(color);
+        var ncolor = color.deriveColor(0, 1, 1, 1 - (timelife - restlife) / timelife);
+        ctx.setFill(ncolor);
 
         ctx.fillOval(point.getX() - point.getR(), point.getY() - point.getR(), point.getR() * 2, point.getR() * 2);
         restlife--;

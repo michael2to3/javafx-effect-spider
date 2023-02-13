@@ -21,9 +21,8 @@ public class Point {
     }
 
     public void updateVelocity(final double a, final double b) {
-        var diff = b - a + 1;
-        dx += Math.random() * diff + a;
-        dy += Math.random() * diff + a;
+        dx += Random.getRange(a, b);
+        dy += Random.getRange(a, b);
     }
 
     public void updatePosition(final double width, final double height, final double k) {

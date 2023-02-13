@@ -74,5 +74,7 @@ public class PointGraphics {
         this.restlife = timelife;
         point.setX(Random.getRange(0, width));
         point.setY(Random.getRange(0, height));
+        point.setDx(Random.getRange(0, 3));
+        point.setDy(Random.getRange(0, 3));
     }
 }

@@ -19,7 +19,7 @@ class Line {
         double y = lhs.getY();
         double tx = rhs.getX();
         double ty = rhs.getY();
-        return Math.sqrt(Math.pow(x - tx, 2) + Math.pow(y - ty, 2));
+        return EMath.distance(x, y, tx, ty);
     }
 
     public void draw(Canvas canvas, final PointGraphics lhs, final PointGraphics rhs) {

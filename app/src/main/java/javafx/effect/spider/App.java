@@ -19,7 +19,7 @@ public class App extends Application {
     public void start(Stage primaryStage) throws Exception {
         var box = new VBox();
         var canvas = new Canvas(WIDTH, HEIGHT);
-        var count = 200;
+        var count = 500;
         var effect = new Effect(canvas, count);
 
         effect.run();

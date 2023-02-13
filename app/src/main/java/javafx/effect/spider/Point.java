@@ -25,7 +25,7 @@ public class Point {
         dy += Random.getRange(a, b);
     }
 
-    public void updatePosition(final double width, final double height, final double k) {
+    private void checkBorder(final double width, final double height) {
         if (x < 0) {
             dx = -dx;
         }
@@ -38,6 +38,11 @@ public class Point {
         if (y > height) {
             dy = -dy;
         }
+    }
+
+
+    public void updatePosition(final double width, final double height, final double k) {
+        checkBorder(width, height);
         x += dx * k;
         y += dy * k;
     }
